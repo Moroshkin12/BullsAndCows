@@ -18,7 +18,7 @@ private:
         // Выбираем первую цифру
         int pos = rand() % digits.length();
         result += digits[pos];
-        digits.erase(pos, 1); 
+        digits.erase(pos, 1);   // удаляет символ под индексом pos один раз (чтобы не было повторяющихся чисел)
         digits += "0"; 
 
         
@@ -32,24 +32,24 @@ private:
     }
 
     
-    bool isValid(string guess) {
-        // Проверка длины
+    bool isValid(string guess) { // проверка на корректный ввод
+       
         if (guess.length() != 3) {
-            cout << "Ошибка: должно быть 3 цифры!\n";
+            cout << "Ошибка: должно быть 3 цифры!" << endl;
             return false;
         }
 
-        // Проверка, что все символы - цифры
+       
         for (int i = 0; i < 3; i++) {
             if (guess[i] < '0' || guess[i] > '9') {
-                cout << "Ошибка: должны быть только цифры!\n";
+                cout << "Ошибка: должны быть только цифры!" << endl;
                 return false;
             }
         }
 
-        // Проверка, что первая цифра не 0
+        
         if (guess[0] == '0') {
-            cout << "Ошибка: первая цифра не может быть 0!\n";
+            cout << "Ошибка: первая цифра не может быть 0!" << endl;
             return false;
         }
 
@@ -198,7 +198,7 @@ public:
         saveToFile("Два игрока");
     }
 
-    // Показать правила
+    
     void showRules() {
         cout << "\n=== ПРАВИЛА ИГРЫ ===\n";
         cout << "1. Загадывается 3-значное число\n";
@@ -222,7 +222,7 @@ int main() {
     int choice;        
 
     do {
-        // Показываем меню
+        
         cout << "\n=== БЫКИ И КОРОВЫ ===\n";
         cout << "1. Играть против компьютера\n";
         cout << "2. Играть вдвоем\n";
@@ -231,7 +231,7 @@ int main() {
         cout << "Выберите: ";
         cin >> choice;
 
-        // Обрабатываем выбор
+       
         switch (choice) {
         case 1:
             game.playVsComputer();
