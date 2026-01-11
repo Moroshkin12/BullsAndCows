@@ -1,0 +1,49 @@
+void playTwoPlayers() {
+    cout << "\n=== ИГРА ДЛЯ ДВУХ ИГРОКОВ ===\n";
+
+
+    cout << "Игрок 1, загадайте число: ";
+    do {
+        cin >> secret;
+    } while (!isValid(secret));
+
+    attempts = 0;
+
+
+    for (int i = 0; i < 40; i++) cout << "\n";
+
+    cout << "Игрок 2, угадывайте число!\n";
+
+    string guess;
+    bool won = false;
+
+    // Основной игровой цикл
+    while (!won) {
+        cout << "\nПопытка " << (attempts + 1) << ": ";
+        cin >> guess;
+
+        // Проверяем ввод
+        if (!isValid(guess)) {
+            cout << "Попробуйте снова: ";
+            continue;
+        }
+
+        attempts++;
+
+        // Считаем быков и коров
+        int bulls, cows;
+        countBullsCows(guess, bulls, cows);
+
+        cout << "Быки: " << bulls << ", Коровы: " << cows << "\n";
+
+        // Проверяем победу
+        if (bulls == 3) {
+            won = true;
+            cout << "\nПОБЕДА! Игрок 2 угадал число " << secret << "\n";
+            cout << "Количество попыток: " << attempts << "\n";
+        }
+    }
+
+    // Сохраняем результат
+    saveToFile("Два игрока");
+}
