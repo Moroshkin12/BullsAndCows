@@ -7,10 +7,10 @@ using namespace std;
 
 class BullsAndCows {
 private:
-    string secret;     
-    int attempts;      
+    string secret;
+    int attempts;
 
-    
+
     string generateNumber() {
         string digits = "123456789"; // Первая цифра не может быть 0
         string result = "";
@@ -19,10 +19,10 @@ private:
         int pos = rand() % digits.length();
         result += digits[pos];
         digits.erase(pos, 1);   // удаляет символ под индексом pos один раз (чтобы не было повторяющихся чисел)
-        digits += "0"; 
+        digits += "0";
 
-        
-        for (int i = 1; i <3; i++) {
+
+        for (int i = 1; i < 4; i++) {
             pos = rand() % digits.length();
             result += digits[pos];
             digits.erase(pos, 1);
@@ -31,29 +31,29 @@ private:
         return result;
     }
 
-    
+
     bool isValid(string guess) { // проверка на корректный ввод
-       
-        if (guess.length() != 3) {
-            cout << "Ошибка: должно быть 3 цифры!" << endl;
+
+        if (guess.length() != 4) {
+            cout << "Ошибка: должно быть 4 цифры!" << endl;
             return false;
         }
 
-       
-        for (int i = 0; i < 3; i++) {
+
+        for (int i = 0; i < 4; i++) {
             if (guess[i] < '0' || guess[i] > '9') {
                 cout << "Ошибка: должны быть только цифры!" << endl;
                 return false;
             }
         }
 
-        
+
         if (guess[0] == '0') {
             cout << "Ошибка: первая цифра не может быть 0!" << endl;
             return false;
         }
 
- 
+
 
         return true;
     }
@@ -63,16 +63,16 @@ private:
         bulls = 0;
         cows = 0;
 
-        
-        for (int i = 0; i < 3; i++) {
+
+        for (int i = 0; i < 4; i++) {
             if (guess[i] == secret[i]) {
                 bulls++;
             }
         }
 
-        
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
                 if (i != j && guess[i] == secret[j]) {
                     cows++;
                     break;
@@ -96,16 +96,16 @@ private:
     }
 
 public:
-    
+
     BullsAndCows() {
-        srand(time(0)); 
+        srand(time(0));
     }
 
     // Игра против компьютера
     void playVsComputer() {
         cout << "\n=== ИГРА ПРОТИВ КОМПЬЮТЕРА ===\n";
 
-        
+
         secret = generateNumber();
         attempts = 0;
 
@@ -136,7 +136,7 @@ public:
             cout << "Быки: " << bulls << ", Коровы: " << cows << "\n";
 
             // Проверяем победу
-            if (bulls == 3) {
+            if (bulls == 4) {
                 won = true;
                 cout << "\nПОБЕДА! Вы угадали число " << secret << "\n";
                 cout << "Количество попыток: " << attempts << "\n";
@@ -151,7 +151,7 @@ public:
     void playTwoPlayers() {
         cout << "\n=== ИГРА ДЛЯ ДВУХ ИГРОКОВ ===\n";
 
-        
+
         cout << "Игрок 1, загадайте число: ";
         do {
             cin >> secret;
@@ -159,7 +159,7 @@ public:
 
         attempts = 0;
 
-        
+
         for (int i = 0; i < 40; i++) cout << "\n";
 
         cout << "Игрок 2, угадывайте число!\n";
@@ -187,7 +187,7 @@ public:
             cout << "Быки: " << bulls << ", Коровы: " << cows << "\n";
 
             // Проверяем победу
-            if (bulls == 3) {
+            if (bulls == 4) {
                 won = true;
                 cout << "\nПОБЕДА! Игрок 2 угадал число " << secret << "\n";
                 cout << "Количество попыток: " << attempts << "\n";
@@ -198,7 +198,7 @@ public:
         saveToFile("Два игрока");
     }
 
-    
+
     void showRules() {
         cout << "\n=== ПРАВИЛА ИГРЫ ===\n";
         cout << "1. Загадывается 3-значное число\n";
@@ -216,13 +216,13 @@ public:
 
 // Главная функция программы
 int main() {
-    setlocale(LC_ALL,"RU");
+    setlocale(LC_ALL, "RU");
 
-    BullsAndCows game; 
-    int choice;        
+    BullsAndCows game;
+    int choice;
 
     do {
-        
+
         cout << "\n=== БЫКИ И КОРОВЫ ===\n";
         cout << "1. Играть против компьютера\n";
         cout << "2. Играть вдвоем\n";
@@ -231,7 +231,7 @@ int main() {
         cout << "Выберите: ";
         cin >> choice;
 
-       
+
         switch (choice) {
         case 1:
             game.playVsComputer();
