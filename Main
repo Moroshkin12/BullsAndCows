@@ -1,0 +1,48 @@
+int main() {
+    setlocale(LC_ALL, "RU");
+
+    BullsAndCows game;
+    int choice;
+
+    do {
+
+        cout << "\n=== БЫКИ И КОРОВЫ ===\n";
+        cout << "1. Играть против компьютера\n";
+        cout << "2. Играть вдвоем\n";
+        cout << "3. Правила игры\n";
+        cout << "0. Выход\n";
+        cout << "Выберите: ";
+        cin >> choice;
+
+
+        switch (choice) {
+        case 1:
+            game.playVsComputer();
+            break;
+        case 2:
+            game.playTwoPlayers();
+            break;
+        case 3:
+            game.showRules();
+            break;
+        case 0:
+            cout << "До свидания!\n";
+            break;
+        default:
+            cout << "Неверный выбор!\n";
+        }
+
+        // Спрашиваем, хочет ли пользователь продолжить
+        if (choice != 0) {
+            cout << "\nХотите вернуться в меню? (1-да, 0-нет): ";
+            int continueChoice;
+            cin >> continueChoice;
+            if (continueChoice == 0) {
+                choice = 0;
+            }
+        }
+
+    } while (choice != 0);
+
+    return 0;
+}
