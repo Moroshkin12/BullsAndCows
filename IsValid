@@ -1,12 +1,12 @@
 bool isValid(string guess) { // проверка на корректный ввод
 
-    if (guess.length() != 3) {
-        cout << "Ошибка: должно быть 3 цифры!" << endl;
+    if (guess.length() != 4) {
+        cout << "Ошибка: должно быть 4 цифры!" << endl;
         return false;
     }
 
 
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 4; i++) {
         if (guess[i] < '0' || guess[i] > '9') {
             cout << "Ошибка: должны быть только цифры!" << endl;
             return false;
