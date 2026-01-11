@@ -1,0 +1,44 @@
+void playVsComputer() {
+    cout << "\n=== ИГРА ПРОТИВ КОМПЬЮТЕРА ===\n";
+
+
+    secret = generateNumber();
+    attempts = 0;
+
+    cout << "Компьютер загадал 3-значное число.\n";
+    cout << "Цифры в числе не повторяются.\n";
+    cout << "Первая цифра не может быть 0.\n";
+
+    string guess;
+    bool won = false;
+
+    // Основной игровой цикл
+    while (!won) {
+        cout << "\nПопытка " << (attempts + 1) << ": ";
+        cin >> guess;
+
+        // Проверяем ввод
+        if (!isValid(guess)) {
+            cout << "Попробуйте снова: ";
+            continue;
+        }
+
+        attempts++;
+
+        // Считаем быков и коров
+        int bulls, cows;
+        countBullsCows(guess, bulls, cows);
+
+        cout << "Быки: " << bulls << ", Коровы: " << cows << "\n";
+
+        // Проверяем победу
+        if (bulls == 3) {
+            won = true;
+            cout << "\nПОБЕДА! Вы угадали число " << secret << "\n";
+            cout << "Количество попыток: " << attempts << "\n";
+        }
+    }
+
+    // Сохраняем результат
+    saveToFile("Игрок vs Компьютер");
+}
