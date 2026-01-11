@@ -1,0 +1,12 @@
+void saveToFile(string mode) {
+    ofstream file("game_log.txt", ios::app); // ios::app - добавляем в конец файла
+
+    file << "\n=== Новая игра ===\n";
+    file << "Режим: " << mode << "\n";
+    file << "Загаданное число: " << secret << "\n";
+    file << "Попыток: " << attempts << "\n";
+    file << "===================\n";
+
+    file.close();
+    cout << "Лог сохранен в файл game_log.txt\n";
+}
