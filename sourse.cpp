@@ -22,7 +22,7 @@ private:
         digits += "0";
 
 
-        for (int i = 1; i < 4; i++) {
+        for (int i = 1; i < 3; i++) {
             pos = rand() % digits.length();
             result += digits[pos];
             digits.erase(pos, 1);
@@ -34,13 +34,13 @@ private:
 
     bool isValid(string guess) { 
 
-        if (guess.length() != 4) {
-            cout << "Ошибка: должно быть 4 цифры!" << endl;
+        if (guess.length() != 3) {
+            cout << "Ошибка: должно быть 3 цифры!" << endl;
             return false;
         }
 
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             if (guess[i] < '0' || guess[i] > '9') {
                 cout << "Ошибка: должны быть только цифры!" << endl;
                 return false;
@@ -64,15 +64,15 @@ private:
         cows = 0;
 
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             if (guess[i] == secret[i]) {
                 bulls++;
             }
         }
 
 
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
                 if (i != j && guess[i] == secret[j]) {
                     cows++;
                     break;
@@ -136,7 +136,7 @@ public:
             cout << "Быки: " << bulls << ", Коровы: " << cows << "\n";
 
             
-            if (bulls == 4) {
+            if (bulls == 3) {
                 won = true;
                 cout << "\nПОБЕДА! Вы угадали число " << secret << "\n";
                 cout << "Количество попыток: " << attempts << "\n";
@@ -187,7 +187,7 @@ public:
             cout << "Быки: " << bulls << ", Коровы: " << cows << "\n";
 
             
-            if (bulls == 4) {
+            if (bulls == 3) {
                 won = true;
                 cout << "\nПОБЕДА! Игрок 2 угадал число " << secret << "\n";
                 cout << "Количество попыток: " << attempts << "\n";
