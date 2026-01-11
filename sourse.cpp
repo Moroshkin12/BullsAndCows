@@ -12,13 +12,13 @@ private:
 
 
     string generateNumber() {
-        string digits = "123456789"; // Первая цифра не может быть 0
+        string digits = "123456789"; 
         string result = "";
 
-        // Выбираем первую цифру
+        
         int pos = rand() % digits.length();
         result += digits[pos];
-        digits.erase(pos, 1);   // удаляет символ под индексом pos один раз (чтобы не было повторяющихся чисел)
+        digits.erase(pos, 1);   
         digits += "0";
 
 
@@ -32,7 +32,7 @@ private:
     }
 
 
-    bool isValid(string guess) { // проверка на корректный ввод
+    bool isValid(string guess) { 
 
         if (guess.length() != 4) {
             cout << "Ошибка: должно быть 4 цифры!" << endl;
@@ -58,7 +58,7 @@ private:
         return true;
     }
 
-    // Подсчет быков и коров
+    
     void countBullsCows(string guess, int& bulls, int& cows) {
         bulls = 0;
         cows = 0;
@@ -81,9 +81,9 @@ private:
         }
     }
 
-    // Сохранение лога игры в файл
+    
     void saveToFile(string mode) {
-        ofstream file("game_log.txt", ios::app); // ios::app - добавляем в конец файла
+        ofstream file("game_log.txt", ios::app); 
 
         file << "\n=== Новая игра ===\n";
         file << "Режим: " << mode << "\n";
@@ -101,7 +101,7 @@ public:
         srand(time(0));
     }
 
-    // Игра против компьютера
+    
     void playVsComputer() {
         cout << "\n=== ИГРА ПРОТИВ КОМПЬЮТЕРА ===\n";
 
@@ -116,12 +116,12 @@ public:
         string guess;
         bool won = false;
 
-        // Основной игровой цикл
+        
         while (!won) {
             cout << "\nПопытка " << (attempts + 1) << ": ";
             cin >> guess;
 
-            // Проверяем ввод
+            
             if (!isValid(guess)) {
                 cout << "Попробуйте снова: ";
                 continue;
@@ -129,13 +129,13 @@ public:
 
             attempts++;
 
-            // Считаем быков и коров
+            
             int bulls, cows;
             countBullsCows(guess, bulls, cows);
 
             cout << "Быки: " << bulls << ", Коровы: " << cows << "\n";
 
-            // Проверяем победу
+            
             if (bulls == 4) {
                 won = true;
                 cout << "\nПОБЕДА! Вы угадали число " << secret << "\n";
@@ -143,11 +143,11 @@ public:
             }
         }
 
-        // Сохраняем результат
+        
         saveToFile("Игрок vs Компьютер");
     }
 
-    // Игра для двух игроков
+    
     void playTwoPlayers() {
         cout << "\n=== ИГРА ДЛЯ ДВУХ ИГРОКОВ ===\n";
 
@@ -167,12 +167,12 @@ public:
         string guess;
         bool won = false;
 
-        // Основной игровой цикл
+        
         while (!won) {
             cout << "\nПопытка " << (attempts + 1) << ": ";
             cin >> guess;
 
-            // Проверяем ввод
+           
             if (!isValid(guess)) {
                 cout << "Попробуйте снова: ";
                 continue;
@@ -180,13 +180,13 @@ public:
 
             attempts++;
 
-            // Считаем быков и коров
+           
             int bulls, cows;
             countBullsCows(guess, bulls, cows);
 
             cout << "Быки: " << bulls << ", Коровы: " << cows << "\n";
 
-            // Проверяем победу
+            
             if (bulls == 4) {
                 won = true;
                 cout << "\nПОБЕДА! Игрок 2 угадал число " << secret << "\n";
@@ -194,7 +194,7 @@ public:
             }
         }
 
-        // Сохраняем результат
+        
         saveToFile("Два игрока");
     }
 
@@ -214,7 +214,7 @@ public:
     }
 };
 
-// Главная функция программы
+
 int main() {
     setlocale(LC_ALL, "RU");
 
@@ -249,7 +249,7 @@ int main() {
             cout << "Неверный выбор!\n";
         }
 
-        // Спрашиваем, хочет ли пользователь продолжить
+        
         if (choice != 0) {
             cout << "\nХотите вернуться в меню? (1-да, 0-нет): ";
             int continueChoice;
