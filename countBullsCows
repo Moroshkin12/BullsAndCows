@@ -1,0 +1,21 @@
+void countBullsCows(string guess, int& bulls, int& cows) {
+    bulls = 0;
+    cows = 0;
+
+
+    for (int i = 0; i < 3; i++) {
+        if (guess[i] == secret[i]) {
+            bulls++;
+        }
+    }
+
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (i != j && guess[i] == secret[j]) {
+                cows++;
+                break;
+            }
+        }
+    }
+}
