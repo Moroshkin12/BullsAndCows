@@ -37,7 +37,7 @@ void playTwoPlayers() {
         cout << "Быки: " << bulls << ", Коровы: " << cows << "\n";
 
         // Проверяем победу
-        if (bulls == 3) {
+        if (bulls == 4) {
             won = true;
             cout << "\nПОБЕДА! Игрок 2 угадал число " << secret << "\n";
             cout << "Количество попыток: " << attempts << "\n";
